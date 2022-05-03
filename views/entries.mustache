@@ -1,0 +1,47 @@
+<html><head>
+
+{{>header}}
+
+</head>
+<body>
+<h1> Menu </h1>
+<div class="text-right" style="margin-bottom: 1em;">
+{{^user}}
+  <a id="login" href="/login" class="btn btn-primary">
+    Sign in
+  </a>
+  <a id="login" href="/register" class="btn btn-primary">
+    Register
+  </a>
+{{/user}}
+
+</div>
+<div class="text-right">
+</div>
+{{#entries}}
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">{{dishName}}</h4>
+    <p class="card-text">
+    Category: {{mealType}}<br>
+    Description: {{description}}<br>
+    Ingredients: {{ingredients}}<br>
+    Allergens: {{allergens}}<br>
+      {{price}}
+     </p>
+<div class="card-footer">
+Menu item in the <a href="/posts/{{author}}">{{author}}</a> menu
+</div>
+</div>
+{{/entries}}
+
+{{^entries}}
+No entries yet.
+{{/entries}}
+</body>
+{{#user}}
+  <a id="Back" href="/" class="btn btn-primary">
+    Back
+  </a>
+{{/user}}
+</html>
