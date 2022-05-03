@@ -122,7 +122,7 @@ getAllEntries() {
         })
         }
 
-addEntry(author, dmealtype, ddescription, dallergen, ddish) {
+addEntry(author, dmealtype, ddescription,dingredients, dallergen, dprice, ddish) {
             var entry = {
             author: author,
             mealType: dmealtype,
@@ -154,5 +154,6 @@ getEntriesByUser(authorName) {
     })
  }
 
+ 
 }
 module.exports = GuestBook;

@@ -9,7 +9,7 @@ exports.show_login = function (req, res) {
 };
 
 exports.handle_login = function (req, res) {
-  // res.redirect("/new");
+   //res.redirect("/new");
   res.render("newEntry", {
     title: "Guest Book",
     user: "user"
@@ -42,7 +42,7 @@ exports.post_new_entry = function (req, res) {
     response.status(400).send("Entries must have an author.");
     return;
   }
-  db.addEntry(req.body.author, req.body.subject, req.body.contents);
+  db.addEntry(req.body.author, req.body.mealType, req.body.description, req.body.ingredients, req.body.allergens, req.body.price, req.body.dishName);
   res.redirect("/loggedIn");
 };
 
