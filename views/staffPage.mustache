@@ -29,6 +29,11 @@
           <li class="nav-item">
             <a class="nav-link" href="login">Login</a>
           </li>
+          <li class="nav-item">
+          <a id="logout" href="/logout" class="btn btn-primary">
+    Sign out
+    </li>
+  </a>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu's</a>
             <div class="dropdown-menu">
@@ -77,13 +82,18 @@
 
     <div class="text-right" style="margin-bottom: 1em;">
 {{#user}}
-  <a id="irrelevant" href="/new" class="btn btn-primary">
-    Test
+  <a id="newentries" href="/new" class="btn btn-primary">
+    Add a new dish
   </a>
 {{/user}}
 {{#user}}
-  <a id="logout" href="/logout" class="btn btn-primary">
-    Sign out
+  <a id="editdish" href="/editThis" class="btn btn-primary">
+    Edit a dish
+  </a>
+{{/user}}
+{{#user}}
+  <a id="available" href="/availableS" class="btn btn-primary">
+    Dish availability
   </a>
 {{/user}}
 </div>

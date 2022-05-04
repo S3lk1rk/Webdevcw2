@@ -43,8 +43,44 @@ exports.post_new_entry = function (req, res) {
     return;
   }
   db.addEntry(req.body.author, req.body.mealType, req.body.description, req.body.ingredients, req.body.allergens, req.body.price, req.body.dishName);
-  res.redirect("/loggedIn");
+  res.redirect("/staffPage");
 };
+
+exports.show_edit_entries = function (req, res) {
+  res.render("editPage", {
+    title: "Guest Book",
+    user: "user",
+  });
+};
+
+exports.edit_an_entry = function (req, res) {
+  console.log("processing post-new_entry controller");
+  if (!req.body.author) {
+    response.status(400).send("Entries must have an author.");
+    return;
+  }
+  db.addEntry(req.body.author, req.body.mealType, req.body.description, req.body.ingredients, req.body.allergens, req.body.price, req.body.dishName);
+  res.redirect("/staffPage");
+};
+
+exports.availability_of_entries = function (req, res) {
+  res.render("editPage", {
+    title: "Guest Book",
+    user: "user",
+  });
+};
+
+exports.hide_an_entry = function (req, res) {
+  console.log("processing post-new_entry controller");
+  if (!req.body.author) {
+    response.status(400).send("Entries must have an author.");
+    return;
+  }
+  db.addEntry(req.body.author, req.body.mealType, req.body.description, req.body.ingredients, req.body.allergens, req.body.price, req.body.dishName);
+  res.redirect("/staffPage");
+};
+
+
 
 exports.show_user_entries = function (req, res) {
   let user = req.params.author;
@@ -88,7 +124,7 @@ exports.post_new_user = function (req, res) {
 exports.loggedIn_landing = function (req, res) {
   db.getAllEntries()
     .then((list) => {
-      res.render("entries", {
+      res.render("staffPage", {
         title: "Guest Book",
         user: "user",
         entries: list,
