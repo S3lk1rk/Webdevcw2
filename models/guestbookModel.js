@@ -19,6 +19,7 @@ this.db.insert({
     allergens: 'mustard, eggs and soya bean',
     price: '£9.00',
     dishName: 'The Après Organic English Breakfast',
+    availability: 'on',
     });
     //for later debugging
     console.log('db entry Lunch inserted');
@@ -31,6 +32,7 @@ this.db.insert({
     allergens: 'Peanut',
     price: '£6.50',
     dishName: 'Chicken satay salad',
+    availability: 'off',
     });
     //for later debugging
     console.log('db entry Lunch inserted');
@@ -42,7 +44,8 @@ this.db.insert({
     ingredients:'wholemeal linguine, lime, avocado, tomatoes, chopped, coriander, red onion, red chilli',
     allergens: 'Gluten, Avocado',
     price: '£5.50',
-    dishName: 'Linguine with avocado, tomato & lime',   
+    dishName: 'Linguine with avocado, tomato & lime',
+    availability: 'on',   
     });
     //for later debugging
     console.log('db entry Ann inserted');
@@ -56,6 +59,20 @@ this.db.insert({
     allergens: 'None',
     price: '£8.80',
     dishName: 'Organic Beetroot & Apple Fritters with Mint & Chilli Dressing',   
+    availability: 'on',
+    });
+    //for later debugging
+    console.log('db entry Ann inserted');
+
+this.db.insert({
+    author: 'Dinner',
+    mealType: 'Main',
+    description: '',
+    ingredients: '' ,
+    allergens: '',
+    price: '£',
+    dishName: '',  
+    availability: 'on', 
     });
     //for later debugging
     console.log('db entry Ann inserted');
@@ -68,18 +85,7 @@ this.db.insert({
     allergens: '',
     price: '£',
     dishName: '',   
-    });
-    //for later debugging
-    console.log('db entry Ann inserted');
-
-this.db.insert({
-    author: 'Dinner',
-    mealType: 'Main',
-    description: '',
-    ingredients: '' ,
-    allergens: '',
-    price: '£',
-    dishName: '',   
+    availability: 'on',
     });
     //for later debugging
     console.log('db entry Ann inserted');
@@ -117,12 +123,12 @@ getAllEntries() {
     })
     })
     }
-    getPetersEntries() {
+getPetersEntries() {
         //return a Promise object, which can be resolved or rejected
         return new Promise((resolve, reject) => {
         //find(author:'Peter) retrieves the data,
         //with error first callback function, err=error, entries=data
-        this.db.find({ author: 'Lunch' }, function(err, entries) {
+        this.db.find({dishAvailability:'on', author: 'Lunch' }, function(err, entries) {
         //if error occurs reject Promise
         if (err) {
         reject(err);
@@ -135,8 +141,26 @@ getAllEntries() {
         })
         })
         }
+getAnnsEntries() {
+            //return a Promise object, which can be resolved or rejected
+            return new Promise((resolve, reject) => {
+            //find(author:'Peter) retrieves the data,
+            //with error first callback function, err=error, entries=data
+            this.db.find({dishAvailability:'on', author: 'Dinner' }, function(err, entries) {
+            //if error occurs reject Promise
+            if (err) {
+            reject(err);
+            //if no error resolve the promise and return the data
+            } else {
+            resolve(entries);
+            //to see what the returned data looks like
+            console.log('getPetersEntries() returns: ', entries);
+            }
+            })
+            })
+            }
 
-addEntry(author, dmealtype, ddescription,dingredients, dallergen, dprice, ddish) {
+addEntry(author, dmealtype, ddescription,dingredients, dallergen, dprice, ddish, available) {
             var entry = {
             author: author,
             mealType: dmealtype,
@@ -144,7 +168,8 @@ addEntry(author, dmealtype, ddescription,dingredients, dallergen, dprice, ddish)
             ingredients: dingredients,
             allergens: dallergen,
             price: dprice,
-            dishName: ddish
+            dishName: ddish,
+            dishAvailability: available
             }
             console.log('entry created', entry);
             this.db.insert(entry, function(err, doc) {

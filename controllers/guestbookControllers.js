@@ -42,7 +42,7 @@ exports.post_new_entry = function (req, res) {
     response.status(400).send("Entries must have an author.");
     return;
   }
-  db.addEntry(req.body.author, req.body.mealType, req.body.description, req.body.ingredients, req.body.allergens, req.body.price, req.body.dishName);
+  db.addEntry(req.body.author, req.body.mealType, req.body.description, req.body.ingredients, req.body.allergens, req.body.price, req.body.dishName, req.body.dishAvailability);
   res.redirect("/staffPage");
 };
 
@@ -59,7 +59,7 @@ exports.edit_an_entry = function (req, res) {
     response.status(400).send("Entries must have an author.");
     return;
   }
-  db.addEntry(req.body.author, req.body.mealType, req.body.description, req.body.ingredients, req.body.allergens, req.body.price, req.body.dishName);
+  db.addEntry(req.body.author, req.body.mealType, req.body.description, req.body.ingredients, req.body.allergens, req.body.price, req.body.dishName, req.body.dishAvailability);
   res.redirect("/staffPage");
 };
 
@@ -76,7 +76,7 @@ exports.hide_an_entry = function (req, res) {
     response.status(400).send("Entries must have an author.");
     return;
   }
-  db.addEntry(req.body.author, req.body.mealType, req.body.description, req.body.ingredients, req.body.allergens, req.body.price, req.body.dishName);
+  db.addEntry(req.body.author, req.body.mealType, req.body.description, req.body.ingredients, req.body.allergens, req.body.price, req.body.dishName, req.body.dishAvailability);
   res.redirect("/staffPage");
 };
 
