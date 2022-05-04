@@ -7,7 +7,8 @@ const {verify} = require('../auth/auth')
 router.get('/login', controller.show_login);
 router.post('/login', login, controller.handle_login);
 router.get("/posts", controller.landing_page);
-router.get('/new',verify,controller.show_new_entries);
+router.get('/new',verify, controller.show_new_entries);
+router.post('/newEntry',verify, controller.show_new_entries);
 router.post('/new', verify, controller.post_new_entry);
 router.get('/posts/:author', controller.show_user_entries);
 router.get('/register', controller.show_register_page);

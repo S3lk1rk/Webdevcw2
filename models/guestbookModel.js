@@ -83,7 +83,21 @@ this.db.insert({
     });
     //for later debugging
     console.log('db entry Ann inserted');
+
+/*
+this.db.remove({ dishName: 'Organic Beetroot & Apple Fritters with Mint & Chilli Dressing' }, {}, function (err, numRemoved) {
+    // numRemoved = 1
+    console.log('removed beetroot');
+  });
+*/
+/*
+this.db.update({ dishName: 'Organic Beetroot & Apple Fritters with Mint & Chilli Dressing' }, { $set: { dishName: 'Dog biscuit' } }, { multi: true }, function (err, numReplaced) {
+    // numReplaced = 3
+    // Field 'system' on Mars, Earth, Jupiter now has value 'solar system'
+  });
+*/
 }
+
 //a function to return all entries from the database
 getAllEntries() {
     //return a Promise object, which can be resolved or rejected
@@ -141,6 +155,27 @@ addEntry(author, dmealtype, ddescription,dingredients, dallergen, dprice, ddish)
             }
             }) 
         }       
+/*
+removeEntry(ddish)
+    var entry = {
+    author: author,
+    mealType: dmealtype,
+    description: ddescription,
+    ingredients: dingredients,
+    allergens: dallergen,
+    price: dprice,
+    dishName: ddish
+    }
+    console.log('entry created', entry);
+    this.db.d(entry, function(err, doc) {
+    if (err) {
+    console.log('Error inserting document', subject);
+    } else {
+    console.log('document inserted into the database', doc);
+    }
+    }) 
+}       
+ */  
 getEntriesByUser(authorName) {
             return new Promise((resolve, reject) => {
                 this.db.find({ 'author': authorName }, function(err, entries) {
