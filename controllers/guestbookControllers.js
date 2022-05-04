@@ -16,8 +16,8 @@ exports.handle_login = function (req, res) {
   });
 };
 
-exports.landing_page = function (req, res) {
-  db.getAllEntries()
+exports.annlanding_page = function (req, res) {
+  db.getAnnsEntries()
     .then((list) => {
       res.render("entries", {
         title: "Menu items",
@@ -28,7 +28,18 @@ exports.landing_page = function (req, res) {
       console.log("promise rejected", err);
     });
 };
-
+exports.peterlanding_page = function (req, res) {
+  db.getPetersEntries()
+    .then((list) => {
+      res.render("entries", {
+        title: "Menu items",
+        entries: list,
+      });
+    })
+    .catch((err) => {
+      console.log("promise rejected", err);
+    });
+};
 exports.show_new_entries = function (req, res) {
   res.render("newEntry", {
     title: "Guest Book",

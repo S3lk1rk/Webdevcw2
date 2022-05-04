@@ -19,7 +19,7 @@ this.db.insert({
     allergens: 'mustard, eggs and soya bean',
     price: '£9.00',
     dishName: 'The Après Organic English Breakfast',
-    availability: 'on',
+    dishAvailability: 'on',
     });
     //for later debugging
     console.log('db entry Lunch inserted');
@@ -32,7 +32,7 @@ this.db.insert({
     allergens: 'Peanut',
     price: '£6.50',
     dishName: 'Chicken satay salad',
-    availability: 'off',
+    dishAvailability: 'off',
     });
     //for later debugging
     console.log('db entry Lunch inserted');
@@ -45,7 +45,7 @@ this.db.insert({
     allergens: 'Gluten, Avocado',
     price: '£5.50',
     dishName: 'Linguine with avocado, tomato & lime',
-    availability: 'on',   
+    dishAvailability: 'on',   
     });
     //for later debugging
     console.log('db entry Ann inserted');
@@ -59,7 +59,7 @@ this.db.insert({
     allergens: 'None',
     price: '£8.80',
     dishName: 'Organic Beetroot & Apple Fritters with Mint & Chilli Dressing',   
-    availability: 'on',
+    dishAvailability: 'on',
     });
     //for later debugging
     console.log('db entry Ann inserted');
@@ -72,7 +72,7 @@ this.db.insert({
     allergens: '',
     price: '£',
     dishName: '',  
-    availability: 'on', 
+    dishAvailability: 'on', 
     });
     //for later debugging
     console.log('db entry Ann inserted');
@@ -85,7 +85,7 @@ this.db.insert({
     allergens: '',
     price: '£',
     dishName: '',   
-    availability: 'on',
+    dishAvailability: 'on',
     });
     //for later debugging
     console.log('db entry Ann inserted');
