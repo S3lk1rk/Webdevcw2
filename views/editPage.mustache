@@ -3,7 +3,7 @@
 {{>header}}
 </head>
 <body class="container">
-<h2>Edit a dish</h2>
+<h2>Add a dish</h2>
 <div class="text-right" style="margin-bottom: 1em;">
 {{^user}}
   <a id="login" href="/register" class="btn btn-primary">
@@ -26,8 +26,8 @@
 <input type="text" class="form-control" id="author"
 name="author" placeholder="Lunch or Dinner"
 required>
-</div>
 
+</div>
 <form method="post" role="form" action="/new">
 <div class="form-group">
 <label for="mealType">Meal type</label>
@@ -70,6 +70,16 @@ required>
 <input type="text" class="form-control" id="dishName"
 name="dishName" placeholder="What is the dish called"
 required>
+</div>
+<div class="dishA">
+            <div class="form-check">
+              <input id="option1" name="dishAvailability" type="radio" class="form-check-input" required="">
+              <label class="form-check-label" for="option1">Available</label>
+            </div>
+            <div class="form-check">
+              <input id="option2" name="dishAvailability" type="radio" class="form-check-input" required="">
+              <label class="form-check-label" for="option2">Unavailable</label>
+            </div>
 </div>
 
 <div class="form-group">

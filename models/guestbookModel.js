@@ -32,7 +32,7 @@ this.db.insert({
     allergens: 'Peanut',
     price: '£6.50',
     dishName: 'Chicken satay salad',
-    dishAvailability: 'off',
+    dishAvailability: 'on',
     });
     //for later debugging
     console.log('db entry Lunch inserted');
@@ -96,12 +96,7 @@ this.db.remove({ dishName: 'Organic Beetroot & Apple Fritters with Mint & Chilli
     console.log('removed beetroot');
   });
 */
-/*
-this.db.update({ dishName: 'Organic Beetroot & Apple Fritters with Mint & Chilli Dressing' }, { $set: { dishName: 'Dog biscuit' } }, { multi: true }, function (err, numReplaced) {
-    // numReplaced = 3
-    // Field 'system' on Mars, Earth, Jupiter now has value 'solar system'
-  });
-*/
+
 }
 
 //a function to return all entries from the database
@@ -170,15 +165,13 @@ editEntry(author, dmealtype, ddescription,dingredients, dallergen, dprice, ddish
         dishName: ddish,
         dishAvailability: available
         }
-        console.log('entry created', entry);
-        this.db.insert(entry, function(err, doc) {
-        if (err) {
-        console.log('Error inserting document', author);
-        } else {
-        console.log('document inserted into the database', doc);
-        }
-        }) 
+        this.db.update({ dishName: ddish }, { $set: entry }, { multi: true }, function (err, numReplaced) {
+            // numReplaced = 3
+            // Field 'system' on Mars, Earth, Jupiter now has value 'solar system'
+          })
+         
     }   
+    
 addEntry(author, dmealtype, ddescription,dingredients, dallergen, dprice, ddish, available) {
             var entry = {
             author: author,
@@ -198,7 +191,35 @@ addEntry(author, dmealtype, ddescription,dingredients, dallergen, dprice, ddish,
             console.log('document inserted into the database', doc);
             }
             }) 
-        }       
+        }  
+        
+/*
+this.db.update({ dishName: 'Organic Beetroot & Apple Fritters with Mint & Chilli Dressing' }, { $set: { dishName: 'Dog biscuit' } }, { multi: true }, function (err, numReplaced) {
+    // numReplaced = 3
+    // Field 'system' on Mars, Earth, Jupiter now has value 'solar system'
+  });
+*/        
+/*        
+updateEntry(_id,available, ddish, dprice, description, dallergen, dingredients, dmealtype, author) {
+    this.db.update(
+        { _id: _id}, 
+        { $set: { dishAvailability: available} },
+        { $set: { dishName: ddish} },
+        { $set: { price: dprice} },
+        { $set: { description: description} },
+        { $set: { allergens: dallergen} },
+        { $set: { ingredients: dingredients} },
+        { $set: { mealType: dmealtype} },
+        { $set: { author: author} },
+        ); 
+}
+*//*
+editDish() {
+  this.db.update({ dishName: 'Organic Beetroot & Apple Fritters with Mint & Chilli Dressing' }, { $set: { dishName: 'Dog biscuit' } }, { multi: true }, function (err, numReplaced) {
+    // numReplaced = 3
+    // Field 'system' on Mars, Earth, Jupiter now has value 'solar system'
+  });
+}*/
 /*
 removeEntry(ddish)
     var entry = {

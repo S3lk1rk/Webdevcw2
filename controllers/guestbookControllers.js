@@ -40,12 +40,15 @@ exports.peterlanding_page = function (req, res) {
       console.log("promise rejected", err);
     });
 };
+
 exports.show_new_entries = function (req, res) {
   res.render("newEntry", {
     title: "Guest Book",
     user: "user",
   });
 };
+
+
 
 exports.post_new_entry = function (req, res) {
   console.log("processing post-new_entry controller");
@@ -70,9 +73,15 @@ exports.edit_an_entry = function (req, res) {
     response.status(400).send("Entries must have an author.");
     return;
   }
-  db.addEntry(req.body.author, req.body.mealType, req.body.description, req.body.ingredients, req.body.allergens, req.body.price, req.body.dishName, req.body.dishAvailability);
+  db.editDish(req.body.author, req.body.mealType, req.body.description, req.body.ingredients, req.body.allergens, req.body.price, req.body.dishName, req.body.dishAvailability);
   res.redirect("/staffPage");
 };
+
+
+
+
+
+
 
 exports.availability_of_entries = function (req, res) {
   res.render("editPage", {
