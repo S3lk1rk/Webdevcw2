@@ -159,7 +159,26 @@ getAnnsEntries() {
             })
             })
             }
-
+editEntry(author, dmealtype, ddescription,dingredients, dallergen, dprice, ddish, available) {
+    var entry = {
+        author: author,
+        mealType: dmealtype,
+        description: ddescription,
+        ingredients: dingredients,
+        allergens: dallergen,
+        price: dprice,
+        dishName: ddish,
+        dishAvailability: available
+        }
+        console.log('entry created', entry);
+        this.db.insert(entry, function(err, doc) {
+        if (err) {
+        console.log('Error inserting document', author);
+        } else {
+        console.log('document inserted into the database', doc);
+        }
+        }) 
+    }   
 addEntry(author, dmealtype, ddescription,dingredients, dallergen, dprice, ddish, available) {
             var entry = {
             author: author,
