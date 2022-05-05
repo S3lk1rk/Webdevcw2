@@ -56,8 +56,8 @@ exports.post_new_entry = function (req, res) {
     response.status(400).send("Entries must have an author.");
     return;
   }
-  db.addEntry(req.body.author, req.body.mealType, req.body.description, req.body.ingredients, req.body.allergens, req.body.price, req.body.dishName, req.body.dishAvailability);
-  res.redirect("/staffPage");
+  db.addEntry(req.body._id, req.body.author, req.body.mealType, req.body.description, req.body.ingredients, req.body.allergens, req.body.price, req.body.dishName, req.body.dishAvailability);
+  res.render("staffPage");
 };
 
 exports.show_edit_entries = function (req, res) {
@@ -73,7 +73,7 @@ exports.edit_an_entry = function (req, res) {
     response.status(400).send("Entries must have an author.");
     return;
   }
-  db.editDish(req.body.author, req.body.mealType, req.body.description, req.body.ingredients, req.body.allergens, req.body.price, req.body.dishName, req.body.dishAvailability);
+  db.editEntry(req.body._id, req.body.author, req.body.mealType, req.body.description, req.body.ingredients, req.body.allergens, req.body.price, req.body.dishName, req.body.dishAvailability);
   res.redirect("/staffPage");
 };
 

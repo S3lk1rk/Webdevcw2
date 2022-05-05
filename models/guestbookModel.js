@@ -12,6 +12,7 @@ class GuestBook {
 init() {
 
 this.db.insert({
+    _id: '1',
     author: 'Lunch',
     mealType: 'Main',
     description: 'A hearty locally sourced breakfast to start your day right.',
@@ -19,12 +20,13 @@ this.db.insert({
     allergens: 'mustard, eggs and soya bean',
     price: '£9.00',
     dishName: 'The Après Organic English Breakfast',
-    dishAvailability: 'on',
+    dishAvailability: 'available',
     });
     //for later debugging
     console.log('db entry Lunch inserted');
     
 this.db.insert({
+    _id:'2',
     author: 'Lunch',
     mealType: 'Main',
     description: 'a healthy meal  high in protein and big on flavour',
@@ -32,12 +34,13 @@ this.db.insert({
     allergens: 'Peanut',
     price: '£6.50',
     dishName: 'Chicken satay salad',
-    dishAvailability: 'on',
+    dishAvailability: 'available',
     });
     //for later debugging
     console.log('db entry Lunch inserted');
 
 this.db.insert({
+    _id:'3',
     author: 'Dinner',
     mealType: 'Main',
     description: 'A low-calorie vegan linguine which can also be served cold as a pasta salad. It delivers on flavour and its healthy.',
@@ -45,13 +48,14 @@ this.db.insert({
     allergens: 'Gluten, Avocado',
     price: '£5.50',
     dishName: 'Linguine with avocado, tomato & lime',
-    dishAvailability: 'on',   
+    dishAvailability: 'available',   
     });
     //for later debugging
     console.log('db entry Ann inserted');
   
 
 this.db.insert({
+    _id:'4',
     author: 'Dinner',
     mealType: 'Starter',
     description: 'A healthy vegetarian take on a classic dish.',
@@ -59,12 +63,13 @@ this.db.insert({
     allergens: 'None',
     price: '£8.80',
     dishName: 'Organic Beetroot & Apple Fritters with Mint & Chilli Dressing',   
-    dishAvailability: 'on',
+    dishAvailability: 'available',
     });
     //for later debugging
     console.log('db entry Ann inserted');
 
 this.db.insert({
+    _id:'5',
     author: 'Dinner',
     mealType: 'Main',
     description: '',
@@ -72,12 +77,13 @@ this.db.insert({
     allergens: '',
     price: '£',
     dishName: '',  
-    dishAvailability: 'on', 
+    dishAvailability: 'available', 
     });
     //for later debugging
     console.log('db entry Ann inserted');
 
 this.db.insert({
+    _id:'6',
     author: 'Dinner',
     mealType: 'Main',
     description: '',
@@ -85,7 +91,7 @@ this.db.insert({
     allergens: '',
     price: '£',
     dishName: '',   
-    dishAvailability: 'on',
+    dishAvailability: 'available',
     });
     //for later debugging
     console.log('db entry Ann inserted');
@@ -123,7 +129,7 @@ getPetersEntries() {
         return new Promise((resolve, reject) => {
         //find(author:'Peter) retrieves the data,
         //with error first callback function, err=error, entries=data
-        this.db.find({dishAvailability:'on', author: 'Lunch' }, function(err, entries) {
+        this.db.find({dishAvailability:'available', author: 'Lunch' }, function(err, entries) {
         //if error occurs reject Promise
         if (err) {
         reject(err);
@@ -141,7 +147,7 @@ getAnnsEntries() {
             return new Promise((resolve, reject) => {
             //find(author:'Peter) retrieves the data,
             //with error first callback function, err=error, entries=data
-            this.db.find({dishAvailability:'on', author: 'Dinner' }, function(err, entries) {
+            this.db.find({dishAvailability:'available', author: 'Dinner' }, function(err, entries) {
             //if error occurs reject Promise
             if (err) {
             reject(err);
@@ -154,8 +160,9 @@ getAnnsEntries() {
             })
             })
             }
-editEntry(author, dmealtype, ddescription,dingredients, dallergen, dprice, ddish, available) {
+editEntry(identification, author, dmealtype, ddescription,dingredients, dallergen, dprice, ddish, available) {
     var entry = {
+        _id: identification,
         author: author,
         mealType: dmealtype,
         description: ddescription,
@@ -165,15 +172,16 @@ editEntry(author, dmealtype, ddescription,dingredients, dallergen, dprice, ddish
         dishName: ddish,
         dishAvailability: available
         }
-        this.db.update({ dishName: ddish }, { $set: entry }, { multi: true }, function (err, numReplaced) {
+        this.db.update({ _id: identification }, { $set: entry }, { multi: true }, function (err, numReplaced) {
             // numReplaced = 3
             // Field 'system' on Mars, Earth, Jupiter now has value 'solar system'
           })
          
     }   
     
-addEntry(author, dmealtype, ddescription,dingredients, dallergen, dprice, ddish, available) {
+addEntry(identification, author, dmealtype, ddescription, dingredients, dallergen, dprice, ddish, available) {
             var entry = {
+            _id: identification,
             author: author,
             mealType: dmealtype,
             description: ddescription,
@@ -186,7 +194,7 @@ addEntry(author, dmealtype, ddescription,dingredients, dallergen, dprice, ddish,
             console.log('entry created', entry);
             this.db.insert(entry, function(err, doc) {
             if (err) {
-            console.log('Error inserting document', subject);
+            console.log('Error inserting document', ddish);
             } else {
             console.log('document inserted into the database', doc);
             }
