@@ -24,7 +24,12 @@ class UserDAO {
             user: 'Ann',
             password: '$2b$10$bnEYkqZM.MhEF/LycycymOeVwkQONq8kuAUGx6G5tF9UtUcaYDs3S'
         });
+        this.db.insert({
+            user: 'Staff',
+            password: '$2a$10$bDd73tCG2cIGTLjWG30uqu8gk89Ko6bJjMkPNaIzH7xZ6Q6W1ZVE.'
+        });
         return this;
+        
     }
     create(username, password) {
         const that = this;
