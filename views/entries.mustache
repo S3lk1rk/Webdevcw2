@@ -7,22 +7,6 @@
 <h1> Menu </h1>
 <div class="text-right" style="margin-bottom: 1em;">
 {{#user}}
-  <a id="newentries" href="/new" class="btn btn-primary">
-    Add a new dish
-  </a>
-{{/user}}
-{{#user}}
-  <a id="editdish" href="/editThis" class="btn btn-primary">
-    Edit a dish
-  </a>
-{{/user}}
-{{#user}}
-  <a id="available" href="/availableS" class="btn btn-primary">
-    Dish availability
-  </a>
-{{/user}}
-{{#user}}
-
   <a id="Back" href="/loggedin" class="btn btn-primary">
     Back to staff page
   </a>
@@ -55,9 +39,7 @@ Menu item in the <a href="/posts/{{author}}">{{author}}</a> menu
 No entries yet.
 {{/entries}}
 </body>
-{{#user}}
   <a id="Back" href="/" class="btn btn-primary">
     Back
   </a>
-{{/user}}
 </html>

@@ -41,6 +41,13 @@ exports.peterlanding_page = function (req, res) {
     });
 };
 
+exports.homepage = function (req, res) {
+      res.render("home")
+};
+exports.aboutus = function (req, res) {
+  res.render("aboutus")
+};
+
 exports.show_new_entries = function (req, res) {
   res.render("newEntry", {
     title: "Guest Book",
@@ -77,20 +84,21 @@ exports.edit_an_entry = function (req, res) {
   res.redirect("/staffPage");
 };
 
-
-
-
-
-
-
 exports.availability_of_entries = function (req, res) {
-  res.render("editPage", {
-    title: "Guest Book",
-    user: "user",
+  db.getAllEntries()
+  .then((list) => {
+    res.render("availabilityPage", {
+      title: "Menu items",
+      entries: list,
+    });
+  })
+  .catch((err) => {
+    console.log("promise rejected", err);
   });
 };
 
 exports.hide_an_entry = function (req, res) {
+  
   console.log("processing post-new_entry controller");
   if (!req.body.author) {
     response.status(400).send("Entries must have an author.");

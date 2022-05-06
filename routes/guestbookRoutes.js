@@ -8,6 +8,8 @@ router.get('/login', controller.show_login);
 router.post('/login', login, controller.handle_login);
 router.get("/ann", controller.annlanding_page);
 router.get("/peter", controller.peterlanding_page);
+router.get("/home", verify, controller.homepage);
+router.get("/aboutus", verify, controller.aboutus);
 router.get('/new',verify, controller.show_new_entries);
 router.post('/new', verify, controller.post_new_entry);
 router.get('/editThis',verify,controller.show_edit_entries);
@@ -19,6 +21,7 @@ router.get('/register', controller.show_register_page);
 router.post('/register', controller.post_new_user);
 router.get("/loggedIn",verify, controller.loggedIn_landing);
 router.get("/logout", controller.logout);
+
 
 
 router.use(function(req, res) {
