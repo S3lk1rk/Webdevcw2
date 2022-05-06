@@ -160,6 +160,14 @@ getAnnsEntries() {
             })
             })
             }
+
+availibilitychanger(identification,available) {
+        this.db.update({ _id: identification}, {  $set: { dishAvailability: available } }, {}, function (err, numReplaced) {
+            // numReplaced = 3
+            // Field 'system' on Mars, Earth, Jupiter now has value 'solar system'
+          }) 
+    }   
+                
 editEntry(identification, author, dmealtype, ddescription,dingredients, dallergen, dprice, ddish, available) {
     var entry = {
         _id: identification,

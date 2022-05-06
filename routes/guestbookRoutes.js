@@ -15,7 +15,7 @@ router.post('/new', verify, controller.post_new_entry);
 router.get('/editThis',verify,controller.show_edit_entries);
 router.post('/editThis',verify, controller.edit_an_entry);
 router.get('/availableS',verify,controller.availability_of_entries);
-router.post('/availableS',verify, controller.hide_an_entry);
+router.post('/availableS',verify,controller.hide_an_entry);
 router.get('/posts/:author', controller.show_user_entries);
 router.get('/register', controller.show_register_page);
 router.post('/register', controller.post_new_user);

@@ -98,14 +98,9 @@ exports.availability_of_entries = function (req, res) {
 };
 
 exports.hide_an_entry = function (req, res) {
-  
-  console.log("processing post-new_entry controller");
-  if (!req.body.author) {
-    response.status(400).send("Entries must have an author.");
-    return;
-  }
-  db.addEntry(req.body.author, req.body.mealType, req.body.description, req.body.ingredients, req.body.allergens, req.body.price, req.body.dishName, req.body.dishAvailability);
-  res.redirect("/staffPage");
+  console.log("hiding an entry");
+  db.availibilitychanger(req.body._id,req.body.dishAvailability);
+  db.getAllEntries()
 };
 
 
