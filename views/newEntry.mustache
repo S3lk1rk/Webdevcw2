@@ -1,0 +1,98 @@
+<html lang="en">
+<head>
+{{>header}}
+</head>
+<body class="container">
+<h2>Add a dish</h2>
+<div class="text-right" style="margin-bottom: 1em;">
+{{^user}}
+  <a id="login" href="/register" class="btn btn-primary">
+    Register
+  </a>
+  <a id="login" href="/login" class="btn btn-primary">
+    Sign in
+  </a>
+{{/user}}
+{{#user}}
+
+  <a id="Back" href="/loggedin" class="btn btn-primary">
+    Back
+  </a>
+{{/user}}
+</div>
+<form method="post" role="form" action="/new">
+<div class="form-group">
+<label for="Menutype">Menu</label>
+<input type="text" class="form-control" id="Menutype"
+name="Menutype" placeholder="Lunch or Dinner"
+required>
+
+</div>
+<div class="form-group">
+<label for="mealType">Meal type</label>
+<input type="text" class="form-control" id="mealType"
+name="mealType" placeholder="Starter or Main"
+required>
+</div>
+
+
+<div class="form-group">
+<label for="description">Description</label>
+<input type="text" class="form-control" id="description"
+name="description" placeholder="Please enter a brief description of the dish"
+required>
+</div>
+
+<div class="form-group">
+<label for="ingredients">Ingredients</label>
+<input type="text" class="form-control" id="ingredients"
+name="ingredients" placeholder="Please enter ingredients"
+required>
+</div>
+
+<div class="form-group">
+<label for="allergens">Allergens</label>
+<input type="text" class="form-control" id="allergens"
+name="allergens" placeholder="Please enter any allergens"
+required>
+</div>
+
+<div class="form-group">
+<label for="price">Price</label>
+<input type="text" class="form-control" id="price"
+name="price" placeholder="Please enter the price"
+required>
+</div>
+
+<div class="form-group">
+<label for="_id">Identification number</label>
+<input type="text" class="form-control" id="_id"
+name="_id" placeholder="Please select an ID number"
+required>
+</div>
+
+<div class="form-group">
+<label for="dishName">Dish name</label>
+<input type="text" class="form-control" id="dishName"
+name="dishName" placeholder="What is the dish called"
+required>
+</div>
+
+
+<div class="form-group" role="group" aria-label="Basic radio toggle button group">
+
+  <input type="radio" class="btn-check" name="dishAvailability" id="available" autocomplete="off" checked=""  value="available">
+  <label class="btn btn-outline-primary" for="available">this is on</label>
+
+  <input type="radio" class="btn-check" name="dishAvailability" id="unavailable" autocomplete="off" checked=""  value="unavailable">
+  <label class="btn btn-outline-primary" for="unavailable">this is off</label>
+</div>
+
+
+
+<div class="form-group">
+<input type="submit" value="Add dish" class="btn btn-primary">
+</div>
+</form>
+</body
+</html>

@@ -1,0 +1,46 @@
+
+body.tir{
+    background-image: url("media/v7.jpg");
+  
+    text-align: center;
+    color: #EFF3F0;
+    /* Full height */
+    height: 100%;
+     
+    
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+main.indexpage{
+      /* The image used */
+  background-image: url("media/v10.jpg");
+  
+ 
+  
+  /* Full height */
+ 
+  
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h1.cap{
+    text-align: center;
+    color: #EFF3F0;
+}
+div.card{
+          /* The image used */
+          background-color: #EFF3F0;
+          color: #2a2c2b;
+  width: 75%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+ text-align: center;
+}
