@@ -6,14 +6,22 @@
 <body>
 <h1> Menu </h1>
 <div class="text-right" style="margin-bottom: 1em;">
-{{^user}}
-  <a id="login" href="/login" class="btn btn-primary">
-    Sign in
-  </a>
-  <a id="login" href="/register" class="btn btn-primary">
-    Register
+{{#user}}
+  <a id="newentries" href="/new" class="btn btn-primary">
+    Add a new dish
   </a>
 {{/user}}
+{{#user}}
+  <a id="editdish" href="/editThis" class="btn btn-primary">
+    Edit a dish
+  </a>
+{{/user}}
+{{#user}}
+  <a id="available" href="/availableS" class="btn btn-primary">
+    Dish availability
+  </a>
+{{/user}}
+
 
 
 </div>
